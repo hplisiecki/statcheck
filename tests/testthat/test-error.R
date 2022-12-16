@@ -1,5 +1,9 @@
 context("check if inconsistencies/errors are correctly classified")
 
+
+########################################################
+########################################################
+# Test 1
 # test if the following cases are correctly identified as errors --------------
 
 # check classification of regular errors in all types of tests
@@ -19,6 +23,9 @@ test_that("simple errors are classified as such", {
   expect_true(statcheck(txt6, messages = FALSE)[[VAR_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 2
 # classify inexactly reported p-values correctly
 test_that("inexactly reported p-values are correctly classified",{
   txt1 <- "t(28) = 2.20, ns"
@@ -31,6 +38,9 @@ test_that("inexactly reported p-values are correctly classified",{
   expect_false(statcheck(txt3, messages = FALSE)[[VAR_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 3
 # also classify decision errors as errors
 test_that("decision errors are also classified as errors",{
   txt1 <- "t(28) = 1.20, p = .03"
@@ -40,6 +50,9 @@ test_that("decision errors are also classified as errors",{
   expect_true(statcheck(txt2, messages = FALSE)[[VAR_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 4
 # test if the following cases are correctly identified as correct -------------
 
 # correct rounding
@@ -59,6 +72,9 @@ test_that("correctly rounded p-values are not considered errors", {
   expect_false(statcheck(txt6, messages = FALSE)[[VAR_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 5
 # test if different arguments concerning errors work --------------------------
 
 # OneTailedTests: assume all tests are one-tailed
@@ -72,6 +88,9 @@ test_that("OneTailedTests considers everything as one-tailed", {
   expect_equal(statcheck(txt3, messages = FALSE, OneTailedTests = TRUE)[[VAR_ERROR]], c(FALSE, TRUE))
 })
 
+########################################################
+########################################################
+# Test 6
 # OneTailedTxt: automated detection of one-tailed test in text
 test_that("automated one-tailed test detection works", {
   txt1 <- "t(28) = 2.20, p = .018"
@@ -97,6 +116,9 @@ test_that("automated one-tailed test detection works", {
                          OneTailedTxt = TRUE)[[VAR_COMPUTED_P]], rep(p_1tail, 3))
 })
 
+########################################################
+########################################################
+# Test 7
 # pZeroError: check if p = .000 is counted as an inconsistency or not
 test_that("you can adapt whether p = .000 is counted as inconsistent or not", {
   txt1 <- "t(28) = 22.20, p = .000"
@@ -109,6 +131,9 @@ test_that("you can adapt whether p = .000 is counted as inconsistent or not", {
   expect_true(statcheck(txt2, messages = FALSE, pZeroError = FALSE)[[VAR_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 8
 # test classifications of (in)exact test statistcs and (in)exact p-values ----
 
 # test statistics exactly reported 
@@ -144,7 +169,9 @@ test_that("cases where t = ... are correctly classified", {
   expect_true(statcheck(txt9, messages = FALSE)[[VAR_ERROR]])
 })
 
-
+########################################################
+########################################################
+# Test 9
 # test statistic reported as <
 test_that("cases where t < ... are correctly classified", {
   
@@ -178,6 +205,9 @@ test_that("cases where t < ... are correctly classified", {
   
 })
 
+########################################################
+########################################################
+# Test 10
 # test statistic reported as >
 test_that("cases where t > ... are correctly classified", {
   

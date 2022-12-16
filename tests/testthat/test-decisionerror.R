@@ -1,5 +1,9 @@
 context("check if gross inconsistencies/decision errors are correctly classified")
 
+
+########################################################
+########################################################
+# Test 1 variables
 # test if the following cases are correctly identified as decision errors -----
 
 # check classification of regular decision errors in all types of tests
@@ -36,6 +40,10 @@ test_that("simple decision errors are classified as such", {
   expect_true(statcheck(txt12, messages = FALSE)[[VAR_DEC_ERROR]])
 })
 
+
+########################################################
+########################################################
+# Test 2 variables
 # test if different arguments concerning decision errors work -----------------
 
 # alpha: detect decision errors for different alpha levels
@@ -60,6 +68,9 @@ test_that("decision errors are correctly classified when alpha levels are change
   expect_true(statcheck(txt6, messages = FALSE, alpha = .01)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 3 variables
 # pEqualAlphaSig: should p = .05 be considered significant or not
 test_that("decision errors are correctly classified when argument p = alpha is changed", {
   
@@ -76,7 +87,9 @@ test_that("decision errors are correctly classified when argument p = alpha is c
 
 })
 
-
+########################################################
+########################################################
+# Test 4 variables
 # test classifications of (in)exact test statistcs and (in)exact p-values ----
 
 # test statistics exactly reported & p-value exactly reported
@@ -129,6 +142,9 @@ test_that("cases where t = ..., p = ... are correctly classified", {
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 5 variables
 # test statistics exactly reported & p-value < ...
 test_that("cases where t = ..., p < ... are correctly classified", {
   
@@ -180,6 +196,9 @@ test_that("cases where t = ..., p < ... are correctly classified", {
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 6 variables
 # test statistics exactly reported & p-value > ...
 test_that("cases where t = ..., p > ... are correctly classified", {
   
@@ -231,6 +250,9 @@ test_that("cases where t = ..., p > ... are correctly classified", {
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 7 variables
 # test statistics < & p-value exactly reported
 test_that("cases where t < ..., p = ... are correctly classified", {
   
@@ -279,6 +301,9 @@ test_that("cases where t < ..., p = ... are correctly classified", {
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 8 variables
 # test statistics < & p-value <
 test_that("cases where t < ..., p < ... are correctly classified", {
   
@@ -326,6 +351,10 @@ test_that("cases where t < ..., p < ... are correctly classified", {
   expect_false(statcheck(txt8, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
+
+########################################################
+########################################################
+# Test 9 variables
 
 # test statistics < & p-value >
 test_that("cases where t < ..., p > ... are correctly classified", {
@@ -375,6 +404,9 @@ test_that("cases where t < ..., p > ... are correctly classified", {
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 10 variables
 # test statistics > & p-value exactly reported
 test_that("cases where t > ..., p = ... are correctly classified", {
   
@@ -423,6 +455,9 @@ test_that("cases where t > ..., p = ... are correctly classified", {
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 11 variables
 # test statistics > & p-value <
 test_that("cases where t > ..., p < ... are correctly classified", {
   
@@ -471,6 +506,9 @@ test_that("cases where t > ..., p < ... are correctly classified", {
   expect_false(statcheck(txt9, messages = FALSE, pEqualAlphaSig = FALSE)[[VAR_DEC_ERROR]])
 })
 
+########################################################
+########################################################
+# Test 12 variables
 # test statistics > & p-value >
 test_that("cases where t > ..., p > ... are correctly classified", {
   
