@@ -10,9 +10,9 @@ dir = r'D:\data\ranking\swps'
 subdir = False
 
 
-# file = r'D:\GitHub\statcheck\pdfs\Agata_Dębowska_1.pdf'
-# #
-# texts = getPDF([file])
+file = r'D:\GitHub\statcheck\pdfs\Agata_Dębowska_18.pdf'
+#
+texts = getPDF([file])
 # #
 Res, pRes = statcheck(texts)
 
